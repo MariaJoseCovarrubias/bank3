@@ -1,0 +1,19 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model bank_info {
+  id          BigInt    @id
+  type        Int?      @db.SmallInt
+  bank_origin Int?
+  acc_origin  BigInt?
+  bank_dest   Int?
+  acc_dest    BigInt?
+  money       BigInt?
+  date        DateTime? @db.Timestamp(6)
+}
