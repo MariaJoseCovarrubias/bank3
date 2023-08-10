@@ -1,9 +1,10 @@
 import prisma from "prisma/instance";
 
-
+console.log('holasubpub');
 export default async function handler(req, res) {
   const method = req.method;
   if (method === "POST") {
+    console.log('Recibiendo mensaje');
     const data = atob(req.body.message.data);
 
     const type = parseInt(data.slice(0, 4));

@@ -1,4 +1,6 @@
-import prisma from "prisma/instance"
+"use client"
+
+import prisma from 'prisma/instance';
 import { useEffect, useRef } from 'react';
 import { Chart, registerables } from 'chart.js';
 
@@ -7,10 +9,10 @@ export default function Home({
   CountByType,
   last100Transactions,
   histogramData,
-}) {
+  }) {
 
   const chartRef = useRef(null);
-  let chartInstance = null;
+  let chartInstance;
 
   useEffect(() => {
     if (histogramData && chartRef.current) {
@@ -62,11 +64,11 @@ export default function Home({
     <main>
       <h1> OPERACIONES RECIBIDAS: {count} </h1>
       <h1> TIPO DE OPERACIÓN: ENVÍO DE FONDOS </h1>
-      <p>Cantidad de Operaciones: {CountByType[1]._count.type}</p>
-      <p>Monto Total: ${CountByType[1]._sum.money}</p>
+{/*       {CountByType[1] && <p>Cantidad de Operaciones: {CountByType[1]._count.type}</p>} */}
+{/*       {CountByType[1] && <p>Monto Total: ${CountByType[1]._sum.money}</p>} */}
       <h1> TIPO DE OPERACIÓN: REVERSA DE TRANSACCIÓN </h1>
-      <p>Cantidad de Operaciones: {CountByType[0]._count.type}</p>
-      <p>Monto Total: ${CountByType[0]._sum.money}</p>
+{/*       {CountByType[0] && <p>Cantidad de Operaciones: {CountByType[0]._count.type}</p>} */}
+{/*       {CountByType[0] && <p>Monto Total: ${CountByType[0]._sum.money}</p>} */}
       <h1>100 ÚLTIMAS TRANSACCIONES</h1>
       <table>
         <thead>
@@ -81,9 +83,9 @@ export default function Home({
             <th>Date</th>
           </tr>
         </thead>
-        <tbody>
+{/*         <tbody>
           {last100Transactions.map(transaction => (
-            <tr key={transaction.id}>
+             <tr key={transaction.id}>
               <td>{transaction.id}</td>
               <td>{transaction.type}</td>
               <td>{transaction.bank_origin}</td>
@@ -93,8 +95,8 @@ export default function Home({
               <td>{transaction.money}</td>
               <td>{transaction.date}</td>
             </tr>
-          ))}
-        </tbody>
+           ))}
+        </tbody> */}
       </table>
       <canvas ref={chartRef} width={400} height={200}></canvas>
   
